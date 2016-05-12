@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/web.css' %}">
+    <meta charset="UTF-8">
+    <title>Excel-Django-Angular</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-resource.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.3.1/restangular.min.js"></script>
+    <script type="text/javascript" src="{% static "js/app.js" %}"></script>
+    <script lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.5/xls.min.js"></script>
+
+</head>
+<body>
+
+<nav >
+    <div class="blue lighten-2 nav-wrapper ">
+        <a href="/" class="brand-logo center">Excel-Django-Angular</a>
+    </div>
+</nav>
+
+<div class="content container" ng-app="OfficeFileApp" ng-controller="OfficeFileController">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="card z-depth-1">
+                <form method="POST" action="/" enctype="multipart/form-data" class="center-align">{% csrf_token %}
+                    <div class="">
+                        {{ form.file }}
+                    </div>
+                    <button type="submit" class="waves-effect blue lighten-3 waves-light btn">Upload</button>
+                </form>
+            </div>
+
+            <div class="card z-depth-1">
+                <div class="panel panel-default" >
+                    {% verbatim %}
+                      <table class="table" >
+                          <tr>
+                              <td><b>Filename</b></td>
+                              <td><b>Upload Date</b></td>
+                          </tr>
+                          <tr ng-repeat="file in files">
+                            <td class="center-align">{{ file.file }}</td>
+                            <td class="center-align">{{ file.upload_date }}
+                                <button ng-click="clickme(file)" class="right-align waves-effect blue lighten-3 waves-light btn "><i class="center-align large material-icons">trending_up</i></button>
+                                <button ng-click="delete(file.id)" class="right-align waves-effect blue lighten-3 waves-light btn "><i class="large material-icons">delete</i></button></td>
+                          </tr>
+                      </table>
+                    {% endverbatim %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7 card z-depth-1">
+            <div id="chart_div" style="width: 700px; height: 500px;"></div>
+            <button ng-click="chart.clearChart()" class="center-align waves-effect blue lighten-3 waves-light btn ">Clear</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
