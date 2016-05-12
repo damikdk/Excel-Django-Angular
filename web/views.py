@@ -3,7 +3,7 @@ from django.template import RequestContext
 from django.core.context_processors import csrf
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
-from forms import OfficeFileForm
+from web.forms import OfficeFileForm
 
 
 def onepage(request):
