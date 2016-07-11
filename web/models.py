@@ -15,7 +15,38 @@ class OfficeFile(models.Model):
     def save(__self__):
         super(OfficeFile, __self__).save()
         xls = ExcelFile(__self__.file.path)
-        df = xls.parse(xls.sheet_names[0])
+        df = xls.parse(xls.sheet_names[0] )
         dict_data = df.to_dict('list')
+
+        if 'x' in dict_data:
+            listx = dict_data['x']
+        else:
+            listx = dict_data['x_value']
+
+        if 'y' in dict_data:
+            listy = dict_data['y']
+        else:
+            listy = dict_data['y_value']
+
+        i = 0
+        while i < len(listx):
+            listx[i] = int(listx[i])
+            i +=1
+
+        i = 0
+        while i < len(listy):
+            listy[i] = int(listy[i])
+            i += 1
+
+        if 'x' in dict_data:
+            dict_data['x'] = listx
+        else:
+            dict_data['x_value'] = listx
+
+        if 'y' in dict_data:
+            dict_data['y'] = listy
+        else:
+            dict_data['y_value'] = listy
+
         __self__.dict_coor = json.dumps(dict_data)
         super(OfficeFile, __self__).save()

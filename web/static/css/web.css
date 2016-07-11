@@ -7,5 +7,21 @@ form {
 }
 
 .material-icons {
-    font-size: 20px !important;
+    font-size: 18px !important;
+}
+
+.btn:hover{
+    color: #fff !important;
+}
+
+.info {
+    padding: 20px;
+}
+
+.brand-logo{
+    text-decoration: none !important;
+}
+
+.card {
+    padding-top: 2% !important;
 }

@@ -35,13 +35,24 @@
     <div class="row">
         <div class="col-md-5">
             <div class="card z-depth-1">
-                <form method="POST" action="/" enctype="multipart/form-data" class="center-align">{% csrf_token %}
-                    <div class="">
-                        {{ form.file }}
-                    </div>
-                    <button type="submit" class="waves-effect blue lighten-3 waves-light btn">Upload</button>
-                </form>
+                <div class="info">
+                    <p>Upload file (.xls of .xlsx) or choose one of already downloaded.</p>
+                    <p>First row in file should be [x] for A1 and [y] for B1.</p>
+                    <p>Click <i class="large material-icons">trending_up</i> for draw, <i class="large material-icons">delete</i>
+                        for remove file.</p.
+                    <p>All files will be deleted after 2 hours.</p>
+
+                </div>
             </div>
+
+            <div class="card z-depth-1">
+                    <form method="POST" action="/" enctype="multipart/form-data" class="center-align">{% csrf_token %}
+                        <div>
+                            {{ form.file }}
+                        </div>
+                        <button type="submit" class="waves-effect blue lighten-3 waves-light btn">Upload</button>
+                    </form>
+                </div>
 
             <div class="card z-depth-1">
                 <div class="panel panel-default" >
@@ -65,7 +76,6 @@
 
         <div class="col-md-7 card z-depth-1">
             <div id="chart_div" style="width: 700px; height: 500px;"></div>
-            <button ng-click="chart.clearChart()" class="center-align waves-effect blue lighten-3 waves-light btn ">Clear</button>
         </div>
     </div>
 </div>

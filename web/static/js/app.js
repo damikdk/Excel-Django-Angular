@@ -47,8 +47,8 @@ app.controller('OfficeFileController', function($scope, $http) {
 
             var options = {
             title: 'Graphic:',
-            hAxis: {title: 'Y', minValue: minX-5, maxValue: maxX+5},
-            vAxis: {title: 'X', minValue: minX-5, maxValue: maxX+5},
+            hAxis: {title: 'y', minValue: minX-5, maxValue: maxX+5},
+            vAxis: {title: 'x', minValue: minX-5, maxValue: maxX+5},
             legend: 'none'
             };
 

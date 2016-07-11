@@ -25,7 +25,7 @@ SECRET_KEY = 'v5b#-d8qw!_h%3xu9qimr+j)2pf4)v8l14bze60v^=pz_bco^*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['damik.pythonanywhere.com']
 
 
 # Application definition
