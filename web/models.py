@@ -31,26 +31,5 @@ class OfficeFile(models.Model):
         else:
             listy = dict_data['y_value']
 
-        # превращаем numpyInt to Int
-        i = 0
-        while i < len(listx):
-            listx[i] = int(listx[i])
-            i += 1
-        i = 0
-        while i < len(listy):
-            listy[i] = int(listy[i])
-            i += 1
-
-        # Int обратно в словарь
-        if 'x' in dict_data:
-            dict_data['x'] = listx
-        else:
-            dict_data['x_value'] = listx
-
-        if 'y' in dict_data:
-            dict_data['y'] = listy
-        else:
-            dict_data['y_value'] = listy
-
         __self__.dict_coor = json.dumps(dict_data)
         super(OfficeFile, __self__).save()
